@@ -26,8 +26,9 @@ class MyGame extends FlameGame with TapDetector {
         position: Vector2.all(16.0),
       ),
       FpsTextComponent(
-        position: Vector2(0, size.y - 50),
+        position: Vector2(0, size.y),
         textRenderer: regular,
+        anchor: Anchor.bottomLeft,
       ),
       TimeTrackComponent(),
     ]);
