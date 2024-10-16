@@ -1,8 +1,8 @@
 import 'package:flame/components.dart';
-import 'package:flame/effects.dart';
+// import 'package:flame/effects.dart';
 import 'package:flutter/material.dart';
 
-import 'package:flame_noise/flame_noise.dart';
+// import 'package:flame_noise/flame_noise.dart';
 import 'package:flame_audio/flame_audio.dart';
 
 import 'utils.dart';
@@ -51,7 +51,7 @@ class Bullet extends PositionComponent with HasGameRef {
   @override
   void update(double dt) {
     position.add(_velocity * dt);
-    // play a sound of explosiion when the bullet goes out of bounds
+    // play a sound of explosion when the bullet goes out of bounds
     if (Utils.isPositionOutOfBounds(gameRef.size, position)) {
       removeFromParent();
       FlameAudio.play('missile_hit.wav');

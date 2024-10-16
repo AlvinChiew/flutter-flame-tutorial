@@ -22,8 +22,8 @@ class LifeBarText extends TextComponent {
   final TextPaint textBallStats = TextPaint(
     style: const TextStyle(color: Colors.red, fontSize: 10),
   );
-  var ordinalformatter = intl.NumberFormat("000", "en_US");
-  var healthDataformatter = intl.NumberFormat("000", "en_US");
+  var ordinalFormatter = intl.NumberFormat("000", "en_US");
+  var healthDataFormatter = intl.NumberFormat("000", "en_US");
 
   /// text data we are formatting
   int _ordinalNumber = 0;
@@ -43,8 +43,8 @@ class LifeBarText extends TextComponent {
   @override
   void update(double dt) {
     /// format the text into the life-health string
-    text = '#${ordinalformatter.format(_ordinalNumber)}'
-        ' - ${healthDataformatter.format(healthData)}%';
+    text = '#${ordinalFormatter.format(_ordinalNumber)}'
+        ' - ${healthDataFormatter.format(healthData)}%';
     super.update(dt);
   }
 }

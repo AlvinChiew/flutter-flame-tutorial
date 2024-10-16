@@ -1,7 +1,6 @@
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
-import 'package:flame/input.dart';
 import 'package:flame/palette.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flame_audio/flame_audio.dart';
@@ -76,7 +75,7 @@ class MyGame extends FlameGame with DragCallbacks, TapCallbacks {
   void onTapUp(TapUpEvent event) {
     //
     // velocity vector pointing straight up.
-    // Represents 0 radians which is 0 desgrees
+    // Represents 0 radians which is 0 degree
     var velocity = Vector2(0, -1);
     // rotate this vector to the same angle as the player
     velocity.rotate(player.angle);

@@ -52,12 +52,12 @@ class MyGame extends FlameGame with TapDetector {
     add(countdown);
   }
 
-  @override
-  void update(double dt) {
-    super.update(dt);
-    //
-    // update the timers
-  }
+  // @override
+  // void update(double dt) {
+  //   super.update(dt);
+  //   //
+  //   // update the timers
+  // }
 
   @override
   void render(Canvas canvas) {
@@ -65,14 +65,14 @@ class MyGame extends FlameGame with TapDetector {
 
     print("<children> ${children.length}");
     //
-    // render the currrent coundown interval setting
+    // render the current countdown interval setting
     textConfig.render(
       canvas,
       'Countdown: ${countdown.timer.current.toStringAsPrecision(3)}',
       Vector2(30, 100),
     );
     //
-    // render the cululative number of seconds elapsed
+    // render the cumulative number of seconds elapsed
     // for the interval timer
     textConfig.render(
         canvas, 'Elapsed # ticks: $elapsedTicks', Vector2(30, 130));
@@ -80,7 +80,7 @@ class MyGame extends FlameGame with TapDetector {
 
   //
   //
-  // Create an instace of the timer component for countdown
+  // Create an instance of the timer component for countdown
   createCountdownTimer() {
     late TimerComponent countdown;
     //

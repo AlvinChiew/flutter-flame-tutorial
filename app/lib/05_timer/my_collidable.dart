@@ -4,7 +4,7 @@ import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart' hide Image, Draggable;
 
 import 'game.dart';
-import 'lifebar_text.dart';
+import 'life_bar_text.dart';
 
 class MyCollidable extends CircleComponent
     with CollisionCallbacks, HasGameRef<MyGame> {
@@ -109,8 +109,8 @@ class MyCollidable extends CircleComponent
         yDirection *= -1;
 
         String collisionKey = hashCode > other.hashCode
-            ? '${other.hashCode}${hashCode}'
-            : '${hashCode}${other.hashCode}';
+            ? '${other.hashCode}$hashCode'
+            : '$hashCode${other.hashCode}';
 
         if (gameRef.observedCollisions.contains(collisionKey)) {
           gameRef.observedCollisions.remove(collisionKey);

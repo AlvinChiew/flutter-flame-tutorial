@@ -1,0 +1,58 @@
+import 'dart:math';
+
+import 'package:flame/components.dart';
+import 'package:flame/game.dart';
+import 'package:flame/input.dart';
+import 'package:flame/particles.dart';
+import 'package:flame/sprite.dart';
+import 'package:flutter/material.dart';
+
+class MyGame extends FlameGame with TapDetector {
+  static const description = 'An example which shows how '
+      'ParticleSystemComponent can be added in runtime '
+      'following an event, in this example, the mouse '
+      'dragging';
+
+  @override
+  Future<void> onLoad() async {
+    await images.load('boom.png');
+  }
+
+  @override
+  void onTapUp(TapUpInfo info) {
+    // get the tap position
+    Vector2 position = info.eventPosition.game;
+    // adjust the tap position to the prite position byt subtracting the size
+    // of the rendered sprite
+    position.sub(Vector2(200, 200));
+    // create the ParticleComponent
+    ParticleComponent particle = ParticleComponent(
+      // use AcceleratedParticle as just a position holder
+      AcceleratedParticle(
+        lifespan: 2,
+        position: position,
+        child: SpriteAnimationParticle(
+          animation: getBoomAnimation(),
+          size: Vector2(200, 200),
+        ),
+      ),
+    );
+    add(particle);
+  }
+
+  ///
+  /// Load up the sprite sheet with an even step time framerate
+  SpriteAnimation getBoomAnimation() {
+    const columns = 8;
+    const rows = 8;
+    const frames = columns * rows;
+    final spriteImage = images.fromCache('boom.png');
+    final spriteSheet = SpriteSheet.fromColumnsAndRows(
+      image: spriteImage,
+      columns: columns,
+      rows: rows,
+    );
+    final sprites = List<Sprite>.generate(frames, spriteSheet.getSpriteById);
+    return SpriteAnimation.spriteList(sprites, stepTime: 0.1);
+  }
+}
